@@ -67,7 +67,7 @@ def SubmitParallelPowheg(LocalDest, ExeFile, Events, Jobs, yamlFileName, PowhegS
             myfile.write(GenerateComments())
             myfile.write("#PBS -o %s\n" % (JobOutput))
             myfile.write("#PBS -j oe\n")
-            myfile.write("source /home/salvatore/load_alice.sh\n")
+            myfile.write("source /home/basia/load_alice.sh\n")
             myfile.write("{LocalDest}/{ExeFile} {LocalDest}/{yamlFileName} --numevents {Events} --job-number {ijob} --powheg-stage {PowhegStage} --batch-job lbnl3\n".format(LocalDest=LocalDest, ExeFile=ExeFile, yamlFileName=yamlFileName, Events=Events, ijob=ijob, PowhegStage=PowhegStage))
         os.chmod(RunJobFileName, 0755)
         output = subprocessCheckOutput(["qsub", RunJobFileName])
