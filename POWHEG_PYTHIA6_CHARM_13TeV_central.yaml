@@ -1,6 +1,6 @@
 name: POWHEG_PYTHIA6_CHARM_13TeV_central
 numevents: 50000
-numbjobs: 400
+numbjobs: 500
 gen: powheg+pythia6
 proc: charm
 beam_type: pp

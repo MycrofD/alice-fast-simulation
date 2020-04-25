@@ -1,4 +1,4 @@
-name: POWHEG_PYTHIA6_EVTGEN_BEAUTY_13TeV_FS1RS05
+name: POWHEG_PYTHIA6_EVTGEN_BEAUTY_13TeV_FS1RS05 
 numevents: 50000
 numbjobs: 500
 gen: powheg+pythia6+evtgen

@@ -1,6 +1,6 @@
 name: POWHEG_PYTHIA6_EVTGEN_BEAUTY_13TeV_central
-numevents: 1000
-numbjobs: 1000
+numevents: 2000
+numbjobs: 4000
 gen: powheg+pythia6+evtgen
 proc: beauty
 lhans: 21200
