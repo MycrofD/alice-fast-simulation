@@ -99,7 +99,7 @@ def CopyFilesToTheGrid(Files, AlienDest, LocalDest, Offline, GridUpdate):
         subprocessCall(["alien_mkdir", "-p", "{0}/output".format(AlienDest)])
 
     if not os.path.isdir(LocalDest):
-        print "Creating directory " + LocalDest
+        print("Creating directory%s" %LocalDest)
         os.makedirs(LocalDest)
     for file in Files:
         if not Offline:
@@ -286,7 +286,7 @@ def SubmitMergingJobs(TrainName, LocalPath, AlienPath, AliPhysicsVersion, Offlin
             subprocessCall(["alien_submit", "alien://{0}/{1}".format(AlienDest, JdlFile)])
         os.remove(JdlFile)
         os.remove(XmlFile)
-    print "Done."
+    print("Done.")
 
     subprocessCall(["ls", LocalDest])
 
@@ -394,7 +394,7 @@ def SubmitProcessingJobs(TrainName, LocalPath, AlienPath, AliPhysicsVersion, Off
         if not Offline:
             subprocessCall(["alien_submit", "alien://{0}/{1}".format(AlienDest, JdlFile)])
         for file in FilesToDelete: os.remove(file)
-    print "Done."
+    print("Done.")
 
     subprocessCall(["ls", LocalDest])
 
@@ -482,7 +482,7 @@ def GetAliPhysicsVersion(ver):
 
 def main(UserConf, yamlFileName, Offline, GridUpdate, OldPowhegInit, PowhegStage, Merge, Download, MergingStage):
     f = open(yamlFileName, 'r')
-    config = yaml.load(f)
+    config = yaml.load(f, Loader=yaml.FullLoader)
     f.close()
 
     if "load_packages_separately" in config["grid_config"]:
@@ -511,23 +511,23 @@ def main(UserConf, yamlFileName, Offline, GridUpdate, OldPowhegInit, PowhegStage
         alirootPath = subprocess.check_output(["which", "aliroot"]).rstrip()
         alienPath = subprocess.check_output(["which", "alien-token-info"]).rstrip()
     except subprocess.CalledProcessError:
-        print "Environment is not configured correctly!"
+        print("Environment is not configured correctly!")
         exit()
 
-    print "Root: " + rootPath
-    print "AliRoot: " + alirootPath
-    print "Alien: " + alienPath
+    print("Root: %s" %rootPath)
+    print("AliRoot: %s" %alirootPath)
+    print("Alien: %s" %alienPath)
 
     try:
-        print "Token info disabled"
+        print("Token info disabled")
         # tokenInfo=subprocess.check_output(["alien-token-info"])
     except subprocess.CalledProcessError:
-        print "Alien token not available. Creating a token for you..."
+        print("Alien token not available. Creating a token for you...")
         try:
             # tokenInit=subprocess.check_output(["alien-token-init", UserConf["username"]], shell=True)
-            print "Token init disabled"
+            print("Token init disabled")
         except subprocess.CalledProcessError:
-            print "Error: could not create the token!"
+            print("Error: could not create the token!")
             exit()
 
     LocalPath = UserConf["local_path"]
