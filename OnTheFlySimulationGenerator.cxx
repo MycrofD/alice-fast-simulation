@@ -105,7 +105,7 @@ OnTheFlySimulationGenerator::OnTheFlySimulationGenerator(TString taskname) :
 }
 
 //______________________________________________________________________________
-OnTheFlySimulationGenerator::OnTheFlySimulationGenerator(TString taskname, Int_t numevents, Process_t proc, ESpecialParticle_t specialPart, Bool_t forceHadDecay, Int_t seed, TString lhe, TString hep) :
+OnTheFlySimulationGenerator::OnTheFlySimulationGenerator(TString taskname, Int_t numevents, Processmydev_t proc, ESpecialParticle_t specialPart, Bool_t forceHadDecay, Int_t seed, TString lhe, TString hep) :
   fName(taskname),
   fAnalysisManager(0),
   fEvents(numevents),
@@ -464,7 +464,7 @@ AliGenCocktail* OnTheFlySimulationGenerator::CreateCocktailGen(EBeamType_t beam,
 }
 
 //________________________________________________________________________
-AliGenPythia_dev* OnTheFlySimulationGenerator::CreatePythia6Gen(EBeamType_t beam, Float_t e_cms, EGenerator_t partonEvent, TString lhe, EPythiaTune_t tune, Process_t proc, ESpecialParticle_t specialPart, Double_t ptHardMin, Double_t ptHardMax)
+AliGenPythia_dev* OnTheFlySimulationGenerator::CreatePythia6Gen(EBeamType_t beam, Float_t e_cms, EGenerator_t partonEvent, TString lhe, EPythiaTune_t tune, Processmydev_t proc, ESpecialParticle_t specialPart, Double_t ptHardMin, Double_t ptHardMax)
 {
   AliInfoGeneralStream("OnTheFlySimulationGenerator") << "PYTHIA6 generator with CMS energy = " << e_cms << " TeV" << std::endl;
 
@@ -518,7 +518,7 @@ AliGenPythia_dev* OnTheFlySimulationGenerator::CreatePythia6Gen(EBeamType_t beam
 }
 
 //________________________________________________________________________
-AliGenPythia_dev* OnTheFlySimulationGenerator::CreatePythia8Gen(EBeamType_t beam, Float_t e_cms, EGenerator_t partonEvent, TString lhe, EPythiaTune_t tune, Process_t proc, ESpecialParticle_t specialPart, Double_t ptHardMin, Double_t ptHardMax)
+AliGenPythia_dev* OnTheFlySimulationGenerator::CreatePythia8Gen(EBeamType_t beam, Float_t e_cms, EGenerator_t partonEvent, TString lhe, EPythiaTune_t tune, Processmydev_t proc, ESpecialParticle_t specialPart, Double_t ptHardMin, Double_t ptHardMax)
 {
   AliInfoGeneralStream("OnTheFlySimulationGenerator") << "PYTHIA8 generator with CMS energy = " << e_cms << " TeV" << std::endl;
 

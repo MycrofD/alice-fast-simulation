@@ -8,6 +8,7 @@
 #include <TTree.h>
 #include <TClonesArray.h>
 #include <TParticle.h>
+#include "PythiaProcesses_mydev.h"
 
 namespace HepMC {
   class IO_BaseClass;

@@ -38,7 +38,7 @@ AliPythia8_dev::AliPythia8_dev():
   if (!AliPythiaRndm::GetPythiaRandom()) AliPythiaRndm::SetPythiaRandom(GetRandom());
 }
 
-void AliPythia8_dev::ProcInit(Process_t process, Float_t energy, Int_t strucfunc, Int_t tune)
+void AliPythia8_dev::ProcInit(Processmydev_t process, Float_t energy, Int_t strucfunc, Int_t tune)
 {
   // Initialise the process to generate
   if (!AliPythiaRndm::GetPythiaRandom())
@@ -91,6 +91,33 @@ void AliPythia8_dev::ProcInit(Process_t process, Float_t energy, Int_t strucfunc
       ReadString(TString::Format("Beams:LHEF = %s", fLHEFile.Data()));
     }
     break;
+  case kPyCharmSoft2Color://case kPyCharm soft mode 2 with colour reconnection. default pythia tune is Monash 2013, https://arxiv.org/pdf/1404.5630.pdf
+    // PYTHIA soft mode 2 color reconnection
+    // SOFT QCD: all, and nonDiff
+    ReadString("SoftQCD:all = on");std::cout<<"SoftQCD set with mode 2"<<std::endl;
+    ReadString("SoftQCD:nonDiffractive = on"); //eikonalized description of all hard processes
+    // FRAGMENTATION: frag functions, choice of longitudinal lightcone fraction z
+    ReadString("StringZ:aLund = 0.36");//tuning as per data
+    ReadString("StringZ:bLund = 0.56");//tuning as per data
+    // FRAGMENTATION: pT, choice of fragmentation pT
+    ReadString("StringPT:sigma = 0.335");//default value
+    // FLAVOUR SELECTION: pT, choice of fragmentation pT
+    ReadString("StringFlav:probStoUD = 0.2");//default is 0.217. suppression of s quark production relative to ordinary u or d.
+    ReadString("StringFlav:probQQtoQ = 0.078");//default is 0.081. suppression of diquark production relative to quark production, i.e. baryon relative to meson production
+    ReadString("StringFlav:probQQ1toQQ0join = 0.0275,0.0275,0.0275,0.0275");
+    ReadString("MultiPartonInteractions:pT0Ref = 2.15");
+    ReadString("BeamRemnants:remnantMode = 1");
+    ReadString("BeamRemnants:saturation = 5");
+    ReadString("ColourReconnection:mode = 1");
+    ReadString("ColourReconnection:allowDoubleJunRem = off");
+    ReadString("ColourReconnection:m0 = 0.3");
+    ReadString("ColourReconnection:allowJunctions = on");
+    ReadString("ColourReconnection:junctionCorrection = 1.20");
+    ReadString("ColourReconnection:timeDilationMode = 2");
+    ReadString("ColourReconnection:timeDilationPar = 0.18"); 
+    break;
+    /*
+     */
 
   default:
     AliWarningStream() << "Process '" << process << "' not implemented!!" << std::endl;
