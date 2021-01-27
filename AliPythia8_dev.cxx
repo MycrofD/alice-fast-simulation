@@ -92,6 +92,7 @@ void AliPythia8_dev::ProcInit(Processmydev_t process, Float_t energy, Int_t stru
     }
     break;
   case kPyCharmSoft2Color://case kPyCharm soft mode 2 with colour reconnection. default pythia tune is Monash 2013, https://arxiv.org/pdf/1404.5630.pdf
+  case kPySoft2Color://case kPyCharm soft mode 2 with colour reconnection. default pythia tune is Monash 2013, https://arxiv.org/pdf/1404.5630.pdf
     // PYTHIA soft mode 2 color reconnection
     // SOFT QCD: all, and nonDiff
     ReadString("SoftQCD:all = on");std::cout<<"SoftQCD set with mode 2"<<std::endl;

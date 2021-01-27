@@ -212,6 +212,10 @@ void runJetSimulation(TString name, Int_t pythiaEvents, TString procStr, TString
         proc = kPyCharmSoft2Color;
         specialPart = OnTheFlySimulationGenerator::kccbar;
     }
+    else if (procStr == "soft2color") {
+        proc = kPySoft2Color;
+        specialPart = OnTheFlySimulationGenerator::kNoSpecialParticle;
+    }
     else {
       AliErrorGeneralStream("") << "You choose '" << procStr.Data() << "'. Not clear what process you want to simualte. Aborting." << std::endl;
       return;
@@ -313,7 +317,7 @@ void runJetSimulation(TString name, Int_t pythiaEvents, TString procStr, TString
   sim->SetEnergyBeam2(ebeam2);
   sim->SetPtHardRange(minPtHard, maxPtHard);
   sim->SetExtendedEventInfo(extended_event_info);
-  if (procStr == "dijet" || procStr == "dijet_lo" || procStr == "mb" || procStr == "soft") {
+  if (procStr == "dijet" || procStr == "dijet_lo" || procStr == "mb" || procStr == "soft" || procStr == "soft2color") {
     sim->EnableJetTree();
   }
   if (always_d_mesons || procStr.Contains("charm") || procStr.Contains("beauty")) {
